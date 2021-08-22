@@ -4,7 +4,8 @@
 
 body {
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
     background: url(/img/bg.webp);
     background-position: center center;
     background-size: cover;
@@ -67,6 +68,7 @@ section {
 
 .current-rate {
     margin-top: 20px;
+    margin-right: 20px;
 }
 
 .current-rate>input {
@@ -75,6 +77,8 @@ section {
     outline: none;
     background: transparent;
     padding: 3px 10px;
+    width: 49px;
+    margin-right: 20px;
 }
 
 .current-rate>button {
@@ -82,6 +86,8 @@ section {
     padding: 3px 10px;
     border-radius: 3px;
     outline: none;
+    border: 2px solid #fff;
+    color: #fff;
 }
 
 .rate-item {
@@ -142,7 +148,7 @@ footer {
 }
 
 @media (min-width: 768px) {
-    .col-md-3 {
-        max-width: 23%;
+    .col-md-4 {
+        max-width: 32%;
     }
 }
