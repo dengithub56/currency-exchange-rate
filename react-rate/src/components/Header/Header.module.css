@@ -1,0 +1,26 @@
+header {
+  background-color: rgba(255, 255, 255, 0.479);
+  flex: 1 1 auto;
+}
+
+.nav {
+  height: 50px;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.item {
+  margin-right: 25px;
+}
+
+.item>a {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 600;
+}

@@ -1,27 +1,24 @@
 // import logo from './logo.svg';
+import Rate from './components/Rate/Rate';
+import Calc from './components/Calc/Calc';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import{BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 import './App.css';
-import Rate from './components/Rate';
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-      <Rate />
+      <Router>
+          <Header />
+          <Switch>
+              <Route exact path="/" component={Rate}/>
+              <Route exact path="/component/Calc/" component={Calc}/>
+          </Switch>
+      </Router>
+      <Footer />
     </div>
   );
 }
 
-export default App;
+

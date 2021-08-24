@@ -1,0 +1,12 @@
+footer {
+  background: #333;
+  color: #fff;
+}
+.list{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.item{
+  color: #fff;
+}
