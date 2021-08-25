@@ -1,5 +1,6 @@
 import React from 'react'
 import './Rate.css'
+const arr = []
 const codeValute = require('./codeValute.json')
 
 export default function Rate(props) {
@@ -8,7 +9,10 @@ export default function Rate(props) {
   const currencyItem = currencyValues.map((el, key) => (
     <div className='rate-item' key={key}>
       <div className='rate-inner'>
-        <div className='rate-item__logo'></div>
+        <div
+          className='rate-item__logo'
+          onload={addCurrencyItemLogoInArray()}
+        ></div>
         <div className='rate-item__currency'>{el.Value.toFixed(2)}</div>
         <div className='rate-item__сod'>{el.CharCode}</div>
       </div>
@@ -18,7 +22,6 @@ export default function Rate(props) {
     </div>
   ))
 
-  const arr = []
   function addCurrencyItemLogoInArray() {
     currencyValues.map(el => {
       codeValute.forEach(k => {
@@ -27,14 +30,11 @@ export default function Rate(props) {
         }
       })
     })
-    addCurrencyItemLogo()
-  }
-
-  function addCurrencyItemLogo() {
     document
       .querySelectorAll('.rate-item__logo')
       .forEach((item, itemKey) => (item.innerHTML = arr[itemKey]))
   }
+
   function dateFromApi(el) {
     const dateApi = new Date(el)
     const yearApi = dateApi.getFullYear()
