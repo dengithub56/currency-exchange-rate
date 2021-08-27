@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import Rate from '../../components/Rate/Rate'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-import './App.css'
+import Rate from '../../components/Rate/Rate'
 import Converter from '../Converter/Converter'
+import './App.css'
 
 export default function App() {
   const [error, setError] = useState(null)
@@ -46,7 +46,7 @@ export default function App() {
         <Router>
           <Header />
           <section>
-            <div class='container-1900'>
+            <div className='container-1900'>
               <h3>курс валют на: {dateFromApi(date)}</h3>
               <p>Базовая валюта: Российский рубль (RUB)</p>
               <Switch>

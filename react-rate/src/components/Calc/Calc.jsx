@@ -3,17 +3,16 @@ import style from './Calc.module.css'
 
 export default function Calc(props) {
   const { currencyRates } = props
-  const [result, setResult] = useState()
 
+  const [result, setResult] = useState()
   const [currencyVal, setCurrencyVal] = useState(
     Object.values(currencyRates)[0]
   )
-
   const [valueSelect, setValueSelect] = useState(Object.keys(currencyRates)[0])
   const [inputValue, setInputValue] = useState(1)
 
   useEffect(() => {
-    setResult(currencyVal * inputValue)
+    setResult((currencyVal * inputValue).toFixed(2))
   }, [currencyVal, inputValue])
 
   function onChangeSelect(e) {
@@ -28,7 +27,7 @@ export default function Calc(props) {
   return (
     <>
       <div className={style.header}>
-        результат обмена {inputValue} RUB на {result} {valueSelect}
+        результат обмена {inputValue} RUB = {result} {valueSelect}
       </div>
       <div className={style.body}>
         <input
