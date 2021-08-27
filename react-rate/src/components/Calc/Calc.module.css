@@ -1,0 +1,24 @@
+.header {
+  color: #fff;
+  font-size: 1.5rem;
+}
+.body {
+  margin-top: 30px;
+}
+.body > input {
+  font-size: 1.2rem;
+  padding: 5px;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+  margin-right: 20px;
+  width: 60%;
+}
+.body > select {
+  font-size: 1.2rem;
+  padding: 3px 15px;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+  background: rgb(87, 179, 174);
+}

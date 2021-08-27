@@ -1,25 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import Calc from './components/Calc/Calc'
-import Rate from './components/Rate/Rate'
-import Header from './components/Header/Header'
-import Footer from './components/Footer/Footer'
+import Rate from '../../components/Rate/Rate'
+import Header from '../../components/Header/Header'
+import Footer from '../../components/Footer/Footer'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import './App.css'
+import Converter from '../Converter/Converter'
 
 export default function App() {
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
   const [date, setDate] = useState(null)
-  const [currencyKeys, setCurrencyKeys] = useState([])
   const [currencyValues, setCurrencyValues] = useState([])
+
   const base_url = 'https://www.cbr-xml-daily.ru/daily_json.js'
   useEffect(() => {
     axios
       .get(base_url)
       .then(result => {
         setIsLoaded(true)
-        setCurrencyKeys(Object.keys(result.data.Valute))
         setCurrencyValues(Object.values(result.data.Valute))
         setDate(result.data.Date)
       })
@@ -28,6 +27,14 @@ export default function App() {
         setError(error)
       })
   }, [])
+
+  function dateFromApi(el) {
+    const dateApi = new Date(el)
+    const yearApi = dateApi.getFullYear()
+    const monthApi = dateApi.getMonth()
+    const dayApi = dateApi.getDate()
+    return `${yearApi}.${monthApi}.${dayApi}`
+  }
 
   if (error) {
     return <div>Ошибка: {error.message}</div>
@@ -38,16 +45,20 @@ export default function App() {
       <div className='App'>
         <Router>
           <Header />
-          <Switch>
-            <Route
-              exact
-              path='/'
-              render={props => (
-                <Rate currencyValues={currencyValues} date={date} {...props} />
-              )}
-            />
-            <Route exact path='/component/Calc/' component={Calc} />
-          </Switch>
+          <section>
+            <div class='container-1900'>
+              <h3>курс валют на: {dateFromApi(date)}</h3>
+              <p>Базовая валюта: Российский рубль (RUB)</p>
+              <Switch>
+                <Route
+                  exact
+                  path='/'
+                  render={props => <Rate currencyValues={currencyValues} />}
+                />
+                <Route exact path='/Converter' component={Converter} />
+              </Switch>
+            </div>
+          </section>
         </Router>
         <Footer />
       </div>

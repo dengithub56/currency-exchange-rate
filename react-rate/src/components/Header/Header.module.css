@@ -1,6 +1,5 @@
 header {
-  background-color: rgba(255, 255, 255, 0.479);
-  flex: 1 1 auto;
+  background: #162034;
 }
 
 .nav {
@@ -19,8 +18,10 @@ header {
   margin-right: 25px;
 }
 
-.item>a {
+.item > a {
   text-transform: uppercase;
   text-decoration: none;
   font-weight: 600;
+  color: #fff;
+  font-size: 0.8rem;
 }
